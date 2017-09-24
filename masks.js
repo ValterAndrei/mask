@@ -35,8 +35,8 @@ $(document).ready(function(){
   /*****************************
   VALIDA O CNPJ
   *****************************/
-  function isCNPJ(cnpj) {
-      cnpj = cnpj.replace(/[^\d]+/g, '');
+  function isCNPJ(strCNPJ) {
+      cnpj = strCNPJ.replace(/[^\d]+/g, '');
 
       if (cnpj == '00000000000000' ||
           cnpj == '11111111111111' ||
@@ -50,31 +50,32 @@ $(document).ready(function(){
           cnpj == '99999999999999')
           return false;
 
-      tamanho = cnpj.length - 2
-      numeros = cnpj.substring(0, tamanho);
-      digitos = cnpj.substring(tamanho);
-      soma = 0;
-      pos = tamanho - 7;
-      for (i = tamanho; i >= 1; i--) {
-          soma += numeros.charAt(tamanho - i) * pos--;
+      size = cnpj.length - 2
+      numbers = cnpj.substring(0, size);
+      digits = cnpj.substring(size);
+      sum = 0;
+      pos = size - 7;
+
+      for (i = size; i >= 1; i--) {
+          sum += numbers.charAt(size - i) * pos--;
           if (pos < 2)
               pos = 9;
       }
-      resultado = soma % 11 < 2 ? 0 : 11 - soma % 11;
-      if (resultado != digitos.charAt(0))
+      result = sum % 11 < 2 ? 0 : 11 - sum % 11;
+      if (result != digits.charAt(0))
           return false;
 
-      tamanho = tamanho + 1;
-      numeros = cnpj.substring(0, tamanho);
-      soma = 0;
-      pos = tamanho - 7;
-      for (i = tamanho; i >= 1; i--) {
-          soma += numeros.charAt(tamanho - i) * pos--;
+      size = size + 1;
+      numbers = cnpj.substring(0, size);
+      sum = 0;
+      pos = size - 7;
+      for (i = size; i >= 1; i--) {
+          sum += numbers.charAt(size - i) * pos--;
           if (pos < 2)
               pos = 9;
       }
-      resultado = soma % 11 < 2 ? 0 : 11 - soma % 11;
-      if (resultado != digitos.charAt(1))
+      result = sum % 11 < 2 ? 0 : 11 - sum % 11;
+      if (result != digits.charAt(1))
           return false;
 
       return true;
@@ -84,11 +85,11 @@ $(document).ready(function(){
   VALIDA O CPF
   *****************************/
   function isCPF(strCPF) {
-      var Soma;
-      var Resto;
+      var sum;
+      var rest;
       var cpf = strCPF.replace(/[^0-9]/g, '').toString();
-
-      Soma = 0;
+      sum = 0;
+      
   	if (cpf == '00000000000' ||
         cpf == '11111111111' ||
         cpf == '22222222222' ||
@@ -98,21 +99,21 @@ $(document).ready(function(){
         cpf == '66666666666' ||
         cpf == '77777777777' ||
         cpf == '88888888888' ||
-        cpf == '99999999999'
-        ) return false;
+        cpf == '99999999999')
+        return false;
 
-  	for (i=1; i<=9; i++) Soma = Soma + parseInt(cpf.substring(i-1, i)) * (11 - i);
-  	Resto = (Soma * 10) % 11;
+  	for (i=1; i<=9; i++) sum = sum + parseInt(cpf.substring(i-1, i)) * (11 - i);
+  	rest = (sum * 10) % 11;
 
-      if ((Resto == 10) || (Resto == 11))  Resto = 0;
-      if (Resto != parseInt(cpf.substring(9, 10)) ) return false;
+      if ((rest == 10) || (rest == 11))  rest = 0;
+      if (rest != parseInt(cpf.substring(9, 10)) ) return false;
 
-  	Soma = 0;
-      for (i = 1; i <= 10; i++) Soma = Soma + parseInt(cpf.substring(i-1, i)) * (12 - i);
-      Resto = (Soma * 10) % 11;
+  	sum = 0;
+      for (i = 1; i <= 10; i++) sum = sum + parseInt(cpf.substring(i-1, i)) * (12 - i);
+      rest = (sum * 10) % 11;
 
-      if ((Resto == 10) || (Resto == 11))  Resto = 0;
-      if (Resto != parseInt(cpf.substring(10, 11) ) ) return false;
+      if ((rest == 10) || (rest == 11))  rest = 0;
+      if (rest != parseInt(cpf.substring(10, 11) ) ) return false;
       return true;
   }
 });
