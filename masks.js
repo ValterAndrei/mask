@@ -6,7 +6,8 @@ $(document).ready(function(){
       }else {
         console.log('CNPJ inválido.');
       }
-    }
+    },
+    clearIfNotMatch: true
   };
 
   var valid_cpf =  {
@@ -17,20 +18,27 @@ $(document).ready(function(){
         console.log('CPF inválido.');
       }
     },
-    reverse: true
+    reverse: true,
+    clearIfNotMatch: true
   };
 
-  $('.cnpj').mask('00.000.000/0000-00', valid_cnpj).on('blur', function(){
-    if ($(this).val().length < 18){
-      $(this).val('')
-    }
-  });
+  var valid_date =  {
+    onComplete: function(date){
+      if (isDate(date)){
+        console.log('Data válida.');
+      }else {
+        console.log('Data inválida.');
+      }
+    },
+    clearIfNotMatch: true,
+    placeholder: "__/__/____"
+  };
 
-  $('.cpf').mask('000.000.000-00', valid_cpf).on('blur', function(){
-    if ($(this).val().length < 14){
-      $(this).val('')
-    }
-  });
+
+  $('.cnpj').mask('00.000.000/0000-00', valid_cnpj);
+  $('.cpf').mask('000.000.000-00', valid_cpf);
+  $('.date').mask('00/00/0000', valid_date);
+
 
   /*****************************
   VALIDA O CNPJ
@@ -89,7 +97,7 @@ $(document).ready(function(){
       var rest;
       var cpf = strCPF.replace(/[^0-9]/g, '').toString();
       sum = 0;
-      
+
   	if (cpf == '00000000000' ||
         cpf == '11111111111' ||
         cpf == '22222222222' ||
@@ -115,5 +123,37 @@ $(document).ready(function(){
       if ((rest == 10) || (rest == 11))  rest = 0;
       if (rest != parseInt(cpf.substring(10, 11) ) ) return false;
       return true;
+  }
+
+  /*****************************
+  VALIDA A DATA
+  *****************************/
+  function isDate(strDate) {
+    var currVal = strDate;
+    if(currVal == '')
+      return false;
+
+    var rxDatePattern = /^(\d{1,2})(\/|-)(\d{1,2})(\/|-)(\d{4})$/;
+    var dtArray = currVal.match(rxDatePattern);
+
+    if (dtArray == null)
+      return false;
+
+    dtDay= dtArray[1];
+    dtMonth = dtArray[3];
+    dtYear = dtArray[5];
+
+    if (dtMonth < 1 || dtMonth > 12)
+      return false;
+    else if (dtDay < 1 || dtDay> 31)
+      return false;
+    else if ((dtMonth==4 || dtMonth==6 || dtMonth==9 || dtMonth==11) && dtDay ==31)
+      return false;
+    else if (dtMonth == 2){
+      var isleap = (dtYear % 4 == 0 && (dtYear % 100 != 0 || dtYear % 400 == 0));
+      if (dtDay> 29 || (dtDay ==29 && !isleap))
+        return false;
+    }
+    return true;
   }
 });
