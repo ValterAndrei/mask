@@ -31,7 +31,7 @@ $(document).ready(function(){
       }
     },
     clearIfNotMatch: true,
-    placeholder: "__/__/____",
+    placeholder: '__/__/____',
     onChange: function(date){
       console.log('Date alterada: ', date);
     }

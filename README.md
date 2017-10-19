@@ -1,6 +1,6 @@
 # Máscaras - jQuery
 
-[Documentação -mask](https://igorescobar.github.io/jQuery-Mask-Plugin/docs.html)
+[Documentação - mask](https://igorescobar.github.io/jQuery-Mask-Plugin/docs.html)
 
 [Documentação - maskMoney](http://plentz.github.io/jquery-maskmoney/)
 
