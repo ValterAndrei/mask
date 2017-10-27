@@ -196,7 +196,7 @@ $(document).ready(function(){
   VALIDA SOMENTE NÚMEROS DIGITADOS
   *****************************/
 
-  $('.just_number').mask('0000', {clearIfNotMatch: true}).on('keypress paste', function(e){
+  $('.just_number').mask('0000000000', {clearIfNotMatch: true}).on('keypress paste', function(e){
     var keycode = e.charCode || e.keyCode;
     if (keycode == 46) {
       return false;
