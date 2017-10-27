@@ -141,6 +141,16 @@ $(document).ready(function(){
   /*****************************
   VALIDA A DATA
   *****************************/
+
+  $('.date').focus(function() {
+    $(this).mask('00/00/0000', valid_date);
+  }).blur(function() {
+    var date = $(this).val();
+    if (isDate(date) == false){
+      $(this).val('');
+    }
+  });
+
   function isDate(strDate) {
     var currVal = strDate;
     if(currVal == '')
@@ -169,19 +179,6 @@ $(document).ready(function(){
     }
     return true;
   }
-
-  /*****************************
-  VALIDA A DATA
-  *****************************/
-
-  $('.date').focus(function() {
-    $(this).mask('00/00/0000', valid_date);
-  }).blur(function() {
-    var date = $(this).val();
-    if (isDate(date) == false){
-      $(this).val('');
-    }
-  });
 
   /*****************************
   VALIDA O TELEFONE
