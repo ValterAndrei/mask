@@ -46,21 +46,13 @@ $(document).ready(function(){
       }
   };
 
-  $('.cnpj').mask('00.000.000/0000-00', valid_cnpj);
-  $('.cpf').mask('000.000.000-00', valid_cpf);
-  $('.date').mask('00/00/0000', valid_date);
-  $('.phone').mask(SPMaskBehavior, spOptions);
-  $('.money').maskMoney({allowNegative: true, thousands:'.', decimal:',', affixesStay: false});
-  $('.just_number').mask('0000', {clearIfNotMatch: true}).on('keypress paste', function(e){
-    var keycode = e.charCode || e.keyCode;
-    if (keycode == 46) {
-      return false;
-    }
-  });
 
   /*****************************
   VALIDA O CNPJ
   *****************************/
+
+  $('.cpf').mask('000.000.000-00', valid_cpf);
+
   function isCNPJ(strCNPJ) {
       cnpj = strCNPJ.replace(/[^\d]+/g, '');
 
@@ -110,6 +102,9 @@ $(document).ready(function(){
   /*****************************
   VALIDA O CPF
   *****************************/
+
+  $('.cnpj').mask('00.000.000/0000-00', valid_cnpj);
+
   function isCPF(strCPF) {
       var sum;
       var rest;
@@ -174,4 +169,40 @@ $(document).ready(function(){
     }
     return true;
   }
+
+  /*****************************
+  VALIDA A DATA
+  *****************************/
+
+  $('.date').focus(function() {
+    $(this).mask('00/00/0000', valid_date);
+  }).blur(function() {
+    var date = $(this).val();
+    if (isDate(date) == false){
+      $(this).val('');
+    }
+  });
+
+  /*****************************
+  VALIDA O TELEFONE
+  *****************************/
+
+  $('.phone').mask(SPMaskBehavior, spOptions);
+
+  /*****************************
+  VALIDA O DINHEIRO
+  *****************************/
+
+  $('.money').maskMoney({allowNegative: true, thousands:'.', decimal:',', affixesStay: false});
+
+  /*****************************
+  VALIDA SOMENTE NÚMEROS DIGITADOS
+  *****************************/
+
+  $('.just_number').mask('0000', {clearIfNotMatch: true}).on('keypress paste', function(e){
+    var keycode = e.charCode || e.keyCode;
+    if (keycode == 46) {
+      return false;
+    }
+  });
 });
