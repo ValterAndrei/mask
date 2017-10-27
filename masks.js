@@ -1,4 +1,9 @@
 $(document).ready(function(){
+
+  /*****************************
+  VALIDA O CNPJ
+  *****************************/
+
   var valid_cnpj =  {
     onComplete: function(cnpj){
       if (isCNPJ(cnpj)){
@@ -10,48 +15,7 @@ $(document).ready(function(){
     clearIfNotMatch: true
   };
 
-  var valid_cpf =  {
-    onComplete: function(cpf){
-      if (isCPF(cpf)){
-        console.log('CPF válido.');
-      }else {
-        console.log('CPF inválido.');
-      }
-    },
-    reverse: true,
-    clearIfNotMatch: true
-  };
-
-  var valid_date =  {
-    onComplete: function(date){
-      if (isDate(date)){
-        console.log('Data válida.');
-      }else {
-        console.log('Data inválida.');
-      }
-    },
-    clearIfNotMatch: true,
-    placeholder: '__/__/____',
-    onChange: function(date){
-      console.log('Date alterada: ', date);
-    }
-  };
-
-  var SPMaskBehavior = function (val) {
-    return val.replace(/\D/g, '').length === 11 ? '(00) 00000-0000' : '(00) 0000-00009';
-  },
-  spOptions = {
-    onKeyPress: function(val, e, field, options) {
-        field.mask(SPMaskBehavior.apply({}, arguments), options);
-      }
-  };
-
-
-  /*****************************
-  VALIDA O CNPJ
-  *****************************/
-
-  $('.cpf').mask('000.000.000-00', valid_cpf);
+  $('.cnpj').mask('00.000.000/0000-00', valid_cnpj);
 
   function isCNPJ(strCNPJ) {
       cnpj = strCNPJ.replace(/[^\d]+/g, '');
@@ -103,7 +67,19 @@ $(document).ready(function(){
   VALIDA O CPF
   *****************************/
 
-  $('.cnpj').mask('00.000.000/0000-00', valid_cnpj);
+  var valid_cpf =  {
+    onComplete: function(cpf){
+      if (isCPF(cpf)){
+        console.log('CPF válido.');
+      }else {
+        console.log('CPF inválido.');
+      }
+    },
+    reverse: true,
+    clearIfNotMatch: true
+  };
+
+  $('.cpf').mask('000.000.000-00', valid_cpf);
 
   function isCPF(strCPF) {
       var sum;
@@ -141,6 +117,24 @@ $(document).ready(function(){
   /*****************************
   VALIDA A DATA
   *****************************/
+
+  var valid_date =  {
+    onComplete: function(date){
+      if (isDate(date)){
+        console.log('Data válida.');
+      }else {
+        console.log('Data inválida.');
+      }
+    },
+    clearIfNotMatch: true,
+    placeholder: '__/__/____',
+    onChange: function(date){
+      //console.log('Data alterada: ', date);
+    },
+    onKeyPress: function(date){
+      //console.log('Data alterada: ', date);
+    }
+  };
 
   $('.date').focus(function() {
     $(this).mask('00/00/0000', valid_date);
@@ -183,6 +177,15 @@ $(document).ready(function(){
   /*****************************
   VALIDA O TELEFONE
   *****************************/
+
+  var SPMaskBehavior = function (val) {
+    return val.replace(/\D/g, '').length === 11 ? '(00) 00000-0000' : '(00) 0000-00009';
+  },
+  spOptions = {
+    onKeyPress: function(val, e, field, options) {
+        field.mask(SPMaskBehavior.apply({}, arguments), options);
+      }
+  };
 
   $('.phone').mask(SPMaskBehavior, spOptions);
 
