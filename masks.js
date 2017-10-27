@@ -51,7 +51,12 @@ $(document).ready(function(){
   $('.date').mask('00/00/0000', valid_date);
   $('.phone').mask(SPMaskBehavior, spOptions);
   $('.money').maskMoney({allowNegative: true, thousands:'.', decimal:',', affixesStay: false});
-
+  $('.just_number').mask('0000', {clearIfNotMatch: true}).on('keypress paste', function(e){
+    var keycode = e.charCode || e.keyCode;
+    if (keycode == 46) {
+      return false;
+    }
+  });
 
   /*****************************
   VALIDA O CNPJ
