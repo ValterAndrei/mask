@@ -1,8 +1,12 @@
+body {
+  background-color: #F5F5F5;
+}
+
 h1 {
   text-align: center;
   padding-top: 50px;
 }
 
-.row {
-  text-align: center;
+.container {
+  width: 300px;
 }

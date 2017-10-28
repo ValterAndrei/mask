@@ -127,7 +127,6 @@ $(document).ready(function(){
       }
     },
     clearIfNotMatch: true,
-    placeholder: '__/__/____',
     onChange: function(date){
       //console.log('Data alterada: ', date);
     },
@@ -138,10 +137,12 @@ $(document).ready(function(){
 
   $('.date').focus(function() {
     $(this).mask('00/00/0000', valid_date);
+    $(this).attr('placeholder', '__/__/____');
   }).blur(function() {
     var date = $(this).val();
     if (isDate(date) == false){
       $(this).val('');
+      $(this).removeAttr('placeholder');
     }
   });
 
