@@ -71,6 +71,40 @@ $(document).ready(function(){
     onComplete: function(cpf){
       if (isCPF(cpf)){
         console.log('CPF válido.');
+        switch (parseInt(cpf[10])) {
+          case 1:
+            console.log('Tocantins, Mato Grosso do Sul, Goiás e Distrito Federal');
+            break;
+          case 2:
+            console.log('Roraima, Amapá, Amazonas, Acre, Rondônia e Pará');
+            break;
+          case 3:
+            console.log('Piauí, Maranhão e Ceará');
+            break;
+          case 4:
+            console.log('Rio Grande do Norte, Pernambuco, Alagoas e Paraíba');
+            break;
+          case 5:
+            console.log('Bahia e Sergipe');
+            break;
+          case 6:
+            console.log('Minas Gerais');
+            break;
+          case 7:
+            console.log('Rio de Janeiro e Espírito Santo');
+            break;
+          case 8:
+            console.log('São Paulo');
+            break;
+          case 9:
+            console.log('Paraná e Santa Catarina');
+            break;
+          case 0:
+            console.log('Rio Grande do Sul');
+            break;
+          default:
+            console.log('Nenhum estado encontrado.');
+        }
       }else {
         console.log('CPF inválido.');
       }
