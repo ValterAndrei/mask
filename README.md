@@ -4,6 +4,8 @@
 
 [Documentação - maskMoney](http://plentz.github.io/jquery-maskmoney/)
 
+[Gerador números válidos](https://www.4devs.com.br/gerador_de_cpf)
+
 [Demo](https://htmlpreview.github.io/?https://github.com/ValterAndrei/mask/blob/master/index.html)
 
 

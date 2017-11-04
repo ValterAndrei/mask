@@ -149,6 +149,40 @@ $(document).ready(function(){
   }
 
   /*****************************
+  VALIDA O CPF OU CNPJ
+  *****************************/
+
+  var options = {
+    onKeyPress: function (cpf, ev, el, op) {
+        var masks = ['000.000.000-000', '00.000.000/0000-00'],
+            mask = (cpf.length > 14) ? masks[1] : masks[0];
+        el.mask(mask, op);
+    }
+  }
+
+  $('.cpfOrCnpj').mask('000.000.000-000', options).blur(function(){
+    strCPForCNPJ = $(this).val();
+
+    if (strCPForCNPJ.length < 14 || (strCPForCNPJ.length > 14 && strCPForCNPJ.length < 18)){
+      $(this).val('');
+    }
+
+    if (strCPForCNPJ.length > 14){
+      if (isCNPJ(strCPForCNPJ)){
+        console.log('CNPJ válido.');
+      }else {
+        console.log('CNPJ inválido.');
+      }
+    }else{
+      if (isCPF(strCPForCNPJ)){
+        console.log('CPF válido.');
+      }else {
+        console.log('CPF inválido.');
+      }
+    }
+  });
+
+  /*****************************
   VALIDA A DATA
   *****************************/
 
