@@ -18,49 +18,49 @@ $(document).ready(function(){
   $('.cnpj').mask('00.000.000/0000-00', valid_cnpj);
 
   function isCNPJ(strCNPJ) {
-      cnpj = strCNPJ.replace(/[^\d]+/g, '');
+    cnpj = strCNPJ.replace(/[^\d]+/g, '');
 
-      if (cnpj == '00000000000000' ||
-          cnpj == '11111111111111' ||
-          cnpj == '22222222222222' ||
-          cnpj == '33333333333333' ||
-          cnpj == '44444444444444' ||
-          cnpj == '55555555555555' ||
-          cnpj == '66666666666666' ||
-          cnpj == '77777777777777' ||
-          cnpj == '88888888888888' ||
-          cnpj == '99999999999999')
-          return false;
+    if (cnpj == '00000000000000' ||
+        cnpj == '11111111111111' ||
+        cnpj == '22222222222222' ||
+        cnpj == '33333333333333' ||
+        cnpj == '44444444444444' ||
+        cnpj == '55555555555555' ||
+        cnpj == '66666666666666' ||
+        cnpj == '77777777777777' ||
+        cnpj == '88888888888888' ||
+        cnpj == '99999999999999')
+        return false;
 
-      size = cnpj.length - 2
-      numbers = cnpj.substring(0, size);
-      digits = cnpj.substring(size);
-      sum = 0;
-      pos = size - 7;
+    size = cnpj.length - 2
+    numbers = cnpj.substring(0, size);
+    digits = cnpj.substring(size);
+    sum = 0;
+    pos = size - 7;
 
-      for (i = size; i >= 1; i--) {
-          sum += numbers.charAt(size - i) * pos--;
-          if (pos < 2)
-              pos = 9;
-      }
-      result = sum % 11 < 2 ? 0 : 11 - sum % 11;
-      if (result != digits.charAt(0))
-          return false;
+    for (i = size; i >= 1; i--) {
+        sum += numbers.charAt(size - i) * pos--;
+        if (pos < 2)
+            pos = 9;
+    }
+    result = sum % 11 < 2 ? 0 : 11 - sum % 11;
+    if (result != digits.charAt(0))
+        return false;
 
-      size = size + 1;
-      numbers = cnpj.substring(0, size);
-      sum = 0;
-      pos = size - 7;
-      for (i = size; i >= 1; i--) {
-          sum += numbers.charAt(size - i) * pos--;
-          if (pos < 2)
-              pos = 9;
-      }
-      result = sum % 11 < 2 ? 0 : 11 - sum % 11;
-      if (result != digits.charAt(1))
-          return false;
+    size = size + 1;
+    numbers = cnpj.substring(0, size);
+    sum = 0;
+    pos = size - 7;
+    for (i = size; i >= 1; i--) {
+        sum += numbers.charAt(size - i) * pos--;
+        if (pos < 2)
+            pos = 9;
+    }
+    result = sum % 11 < 2 ? 0 : 11 - sum % 11;
+    if (result != digits.charAt(1))
+        return false;
 
-      return true;
+    return true;
   }
 
   /*****************************
@@ -116,10 +116,10 @@ $(document).ready(function(){
   $('.cpf').mask('000.000.000-00', valid_cpf);
 
   function isCPF(strCPF) {
-      var sum;
-      var rest;
-      var cpf = strCPF.replace(/[^0-9]/g, '').toString();
-      sum = 0;
+    var sum;
+    var rest;
+    var cpf = strCPF.replace(/[^0-9]/g, '').toString();
+    sum = 0;
 
   	if (cpf == '00000000000' ||
         cpf == '11111111111' ||
@@ -154,9 +154,9 @@ $(document).ready(function(){
 
   var options = {
     onKeyPress: function (cpf, ev, el, op) {
-        var masks = ['000.000.000-000', '00.000.000/0000-00'],
-            mask = (cpf.length > 14) ? masks[1] : masks[0];
-        el.mask(mask, op);
+      var masks = ['000.000.000-000', '00.000.000/0000-00'],
+          mask = (cpf.length > 14) ? masks[1] : masks[0];
+      el.mask(mask, op);
     }
   }
 
@@ -252,8 +252,8 @@ $(document).ready(function(){
   },
   spOptions = {
     onKeyPress: function(val, e, field, options) {
-        field.mask(SPMaskBehavior.apply({}, arguments), options);
-      }
+      field.mask(SPMaskBehavior.apply({}, arguments), options);
+    }
   };
 
   $('.phone').mask(SPMaskBehavior, spOptions);
