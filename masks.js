@@ -194,7 +194,7 @@ $(document).ready(function(){
   VALIDA O DINHEIRO
   *****************************/
 
-  $('.money').maskMoney({allowNegative: true, thousands:'.', decimal:',', affixesStay: false});
+  $('.money').attr('maxlength', '15').maskMoney({allowNegative: true, thousands:'.', decimal:',', affixesStay: false});
 
   /*****************************
   VALIDA SOMENTE NÚMEROS DIGITADOS
