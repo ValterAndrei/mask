@@ -270,7 +270,7 @@ $(document).ready(function(){
 
   $('.just_number').mask('0000000000', {clearIfNotMatch: true}).on('keypress paste', function(e){
     var keycode = e.charCode || e.keyCode;
-    if (keycode == 46) {
+    if (keycode >= 43 && keycode <= 46) {
       return false;
     }
   });
