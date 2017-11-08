@@ -268,10 +268,24 @@ $(document).ready(function(){
   VALIDA SOMENTE NÚMEROS DIGITADOS
   *****************************/
 
-  $('.just_number').mask('0000000000', {clearIfNotMatch: true}).on('keypress paste', function(e){
-    var keycode = e.charCode || e.keyCode;
-    if (keycode >= 43 && keycode <= 46) {
-      return false;
+  $('.just_number').mask('0000', {
+    clearIfNotMatch: true,
+    translation: {
+      'Z': {
+        pattern: /[0-9]/, optional: true
+      }
     }
+  });
+
+  /*****************************
+  VALIDA EMAIL
+  *****************************/
+
+  $('.email').mask('A', {
+  	translation: {
+  		'A': { pattern: /[\w@\-.+]/, recursive: true }
+  	}
+  }).keyup(function(){
+    $(this).val($(this).val().toLowerCase());
   });
 });
