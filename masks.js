@@ -1,9 +1,25 @@
 $(document).ready(function(){
+  $('.cpf').cpfMask();
+  $('.cnpj').cnpjMask();
+  $('.cpfOrCnpj').cpfOrCnpjMask();
+  $('.date').dateMask();
+  $('.phone').phoneMask();
+  $('.money').moneyMask();
+  $('.just_number').justNumberMask();
+  $('.email').emailMask();
+});
 
-  /*****************************
+
+// In jQuery (or $), the fn property is just an alias(apelido designado para referenciar algo) to the prototype property.
+// Exemple:
+// http://jsfiddle.net/CVrFU/
+
+
+/*****************************
   VALIDA O CNPJ
-  *****************************/
+*****************************/
 
+$.fn.cnpjMask = function(){
   var valid_cnpj =  {
     onComplete: function(cnpj){
       if (isCNPJ(cnpj)){
@@ -15,7 +31,7 @@ $(document).ready(function(){
     clearIfNotMatch: true
   };
 
-  $('.cnpj').mask('00.000.000/0000-00', valid_cnpj);
+  this.mask('00.000.000/0000-00', valid_cnpj);
 
   function isCNPJ(strCNPJ) {
     cnpj = strCNPJ.replace(/[^\d]+/g, '');
@@ -62,11 +78,14 @@ $(document).ready(function(){
 
     return true;
   }
+};
 
-  /*****************************
+
+/*****************************
   VALIDA O CPF
-  *****************************/
+*****************************/
 
+$.fn.cpfMask = function(){
   var valid_cpf =  {
     onComplete: function(cpf){
       if (isCPF(cpf)){
@@ -113,7 +132,7 @@ $(document).ready(function(){
     clearIfNotMatch: true
   };
 
-  $('.cpf').mask('000.000.000-00', valid_cpf);
+  this.mask('000.000.000-00', valid_cpf);
 
   function isCPF(strCPF) {
     var sum;
@@ -147,11 +166,14 @@ $(document).ready(function(){
       if (rest != parseInt(cpf.substring(10, 11) ) ) return false;
       return true;
   }
+};
 
-  /*****************************
+
+/*****************************
   VALIDA O CPF OU CNPJ
-  *****************************/
+*****************************/
 
+$.fn.cpfOrCnpjMask = function(){
   var options = {
     onKeyPress: function (cpf, ev, el, op) {
       var masks = ['000.000.000-000', '00.000.000/0000-00'],
@@ -160,7 +182,7 @@ $(document).ready(function(){
     }
   }
 
-  $('.cpfOrCnpj').mask('000.000.000-000', options).blur(function(){
+  this.mask('000.000.000-000', options).blur(function(){
     strCPForCNPJ = $(this).val();
 
     if (strCPForCNPJ.length < 14 || (strCPForCNPJ.length > 14 && strCPForCNPJ.length < 18)){
@@ -182,9 +204,102 @@ $(document).ready(function(){
     }
   });
 
-  /*****************************
+  function isCPF(strCPF) {
+    var sum;
+    var rest;
+    var cpf = strCPF.replace(/[^0-9]/g, '').toString();
+    sum = 0;
+
+    if (cpf == '00000000000' ||
+        cpf == '11111111111' ||
+        cpf == '22222222222' ||
+        cpf == '33333333333' ||
+        cpf == '44444444444' ||
+        cpf == '55555555555' ||
+        cpf == '66666666666' ||
+        cpf == '77777777777' ||
+        cpf == '88888888888' ||
+        cpf == '99999999999')
+        return false;
+
+    for (i=1; i<=9; i++) sum = sum + parseInt(cpf.substring(i-1, i)) * (11 - i);
+    rest = (sum * 10) % 11;
+
+      if ((rest == 10) || (rest == 11))  rest = 0;
+      if (rest != parseInt(cpf.substring(9, 10)) ) return false;
+
+    sum = 0;
+      for (i = 1; i <= 10; i++) sum = sum + parseInt(cpf.substring(i-1, i)) * (12 - i);
+      rest = (sum * 10) % 11;
+
+      if ((rest == 10) || (rest == 11))  rest = 0;
+      if (rest != parseInt(cpf.substring(10, 11) ) ) return false;
+      return true;
+  }
+
+  function isCNPJ(strCNPJ) {
+    cnpj = strCNPJ.replace(/[^\d]+/g, '');
+
+    if (cnpj == '00000000000000' ||
+        cnpj == '11111111111111' ||
+        cnpj == '22222222222222' ||
+        cnpj == '33333333333333' ||
+        cnpj == '44444444444444' ||
+        cnpj == '55555555555555' ||
+        cnpj == '66666666666666' ||
+        cnpj == '77777777777777' ||
+        cnpj == '88888888888888' ||
+        cnpj == '99999999999999')
+        return false;
+
+    size = cnpj.length - 2
+    numbers = cnpj.substring(0, size);
+    digits = cnpj.substring(size);
+    sum = 0;
+    pos = size - 7;
+
+    for (i = size; i >= 1; i--) {
+        sum += numbers.charAt(size - i) * pos--;
+        if (pos < 2)
+            pos = 9;
+    }
+    result = sum % 11 < 2 ? 0 : 11 - sum % 11;
+    if (result != digits.charAt(0))
+        return false;
+
+    size = size + 1;
+    numbers = cnpj.substring(0, size);
+    sum = 0;
+    pos = size - 7;
+    for (i = size; i >= 1; i--) {
+        sum += numbers.charAt(size - i) * pos--;
+        if (pos < 2)
+            pos = 9;
+    }
+    result = sum % 11 < 2 ? 0 : 11 - sum % 11;
+    if (result != digits.charAt(1))
+        return false;
+
+    return true;
+  }
+};
+
+
+/*****************************
   VALIDA A DATA
-  *****************************/
+*****************************/
+
+$.fn.dateMask = function(){
+  this.focus(function() {
+    $(this).mask('00/00/0000', valid_date);
+    $(this).attr('placeholder', '__/__/____');
+  }).blur(function() {
+    var date = $(this).val();
+    if (isDate(date) == false){
+      $(this).val('');
+      $(this).removeAttr('placeholder');
+    }
+  });
 
   var valid_date =  {
     onComplete: function(date){
@@ -202,17 +317,6 @@ $(document).ready(function(){
       //console.log('Data alterada: ', date);
     }
   };
-
-  $('.date').focus(function() {
-    $(this).mask('00/00/0000', valid_date);
-    $(this).attr('placeholder', '__/__/____');
-  }).blur(function() {
-    var date = $(this).val();
-    if (isDate(date) == false){
-      $(this).val('');
-      $(this).removeAttr('placeholder');
-    }
-  });
 
   function isDate(strDate) {
     var currVal = strDate;
@@ -242,11 +346,23 @@ $(document).ready(function(){
     }
     return true;
   }
+};
 
-  /*****************************
+
+/*****************************
+  VALIDA O DINHEIRO
+*****************************/
+
+$.fn.moneyMask = function(){
+  this.attr('maxlength', '15').maskMoney({allowNegative: true, thousands:'.', decimal:',', affixesStay: false})
+};
+
+
+/*****************************
   VALIDA O TELEFONE
-  *****************************/
+*****************************/
 
+$.fn.phoneMask = function(){
   var SPMaskBehavior = function (val) {
     return val.replace(/\D/g, '').length === 11 ? '(00) 00000-0000' : '(00) 0000-00009';
   },
@@ -256,19 +372,32 @@ $(document).ready(function(){
     }
   };
 
-  $('.phone').mask(SPMaskBehavior, spOptions);
+  this.mask(SPMaskBehavior, spOptions);
+};
 
-  /*****************************
-  VALIDA O DINHEIRO
-  *****************************/
 
-  $('.money').attr('maxlength', '15').maskMoney({allowNegative: true, thousands:'.', decimal:',', affixesStay: false});
+/*****************************
+  VALIDA EMAIL
+*****************************/
 
-  /*****************************
+$.fn.emailMask = function(){
+  this.mask('A', {
+    translation: {
+      'A': { pattern: /[\w@\-.+]/, recursive: true }
+    }
+  }).keyup(function(){
+    $(this).val($(this).val().toLowerCase());
+  });
+  return this;
+};
+
+
+/*****************************
   VALIDA SOMENTE NÚMEROS DIGITADOS
-  *****************************/
+*****************************/
 
-  $('.just_number').mask('0000', {
+$.fn.justNumberMask = function(){
+  this.mask('0000', {
     clearIfNotMatch: true,
     translation: {
       'Z': {
@@ -276,16 +405,4 @@ $(document).ready(function(){
       }
     }
   });
-
-  /*****************************
-  VALIDA EMAIL
-  *****************************/
-
-  $('.email').mask('A', {
-  	translation: {
-  		'A': { pattern: /[\w@\-.+]/, recursive: true }
-  	}
-  }).keyup(function(){
-    $(this).val($(this).val().toLowerCase());
-  });
-});
+};
