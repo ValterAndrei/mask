@@ -20,7 +20,7 @@ $(document).ready(function(){
 *****************************/
 
 $.fn.cnpjMask = function(){
-  var valid_cnpj =  {
+  var valid_cnpj = {
     onComplete: function(cnpj){
       if (isCNPJ(cnpj)){
         console.log('CNPJ válido.');
@@ -86,7 +86,7 @@ $.fn.cnpjMask = function(){
 *****************************/
 
 $.fn.cpfMask = function(){
-  var valid_cpf =  {
+  var valid_cpf = {
     onComplete: function(cpf){
       if (isCPF(cpf)){
         console.log('CPF válido.');
@@ -301,7 +301,7 @@ $.fn.dateMask = function(){
     }
   });
 
-  var valid_date =  {
+  var valid_date = {
     onComplete: function(date){
       if (isDate(date)){
         console.log('Data válida.');
