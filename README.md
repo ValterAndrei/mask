@@ -1,10 +1,10 @@
 # Máscaras - jQuery
 
-[Documentação - mask](https://igorescobar.github.io/jQuery-Mask-Plugin/docs.html)
+[mask](https://igorescobar.github.io/jQuery-Mask-Plugin/docs.html)
 
-[Documentação - maskMoney](http://plentz.github.io/jquery-maskmoney/)
+[maskMoney](http://plentz.github.io/jquery-maskmoney/)
 
-[Gerador de números válidos](https://www.4devs.com.br/gerador_de_cpf)
+[Números válidos](https://www.4devs.com.br/gerador_de_cpf)
 
 [Demo](https://htmlpreview.github.io/?https://github.com/ValterAndrei/mask/blob/master/index.html)
 
