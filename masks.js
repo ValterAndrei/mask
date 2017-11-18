@@ -23,9 +23,9 @@ $.fn.cnpjMask = function(){
   var valid_cnpj = {
     onComplete: function(cnpj){
       if (isCNPJ(cnpj)){
-        console.log('CNPJ válido.');
+        console.log('%c CNPJ válido.', 'color: blue');
       }else {
-        console.log('CNPJ inválido.');
+        console.log('%c CNPJ inválido.', 'color: red');
       }
     },
     clearIfNotMatch: true
@@ -89,7 +89,7 @@ $.fn.cpfMask = function(){
   var valid_cpf = {
     onComplete: function(cpf){
       if (isCPF(cpf)){
-        console.log('CPF válido.');
+        console.log('%c CPF válido.', 'color: blue');
         switch (parseInt(cpf[10])) {
           case 1:
             console.log('Tocantins, Mato Grosso do Sul, Goiás e Distrito Federal');
@@ -113,7 +113,7 @@ $.fn.cpfMask = function(){
             console.log('Rio de Janeiro e Espírito Santo');
             break;
           case 8:
-            console.log('São Paulo');
+            console.log('%c São Paulo!', 'background: #222; color: #bada55');
             break;
           case 9:
             console.log('Paraná e Santa Catarina');
@@ -125,7 +125,7 @@ $.fn.cpfMask = function(){
             console.log('Nenhum estado encontrado.');
         }
       }else {
-        console.log('CPF inválido.');
+        console.log('%c CPF inválido.', 'color: red');
       }
     },
     reverse: true,
@@ -187,19 +187,19 @@ $.fn.cpfOrCnpjMask = function(){
 
     if (strCPForCNPJ.length < 14 || (strCPForCNPJ.length > 14 && strCPForCNPJ.length < 18)){
       $(this).val('');
-    }
-
-    if (strCPForCNPJ.length > 14){
-      if (isCNPJ(strCPForCNPJ)){
-        console.log('CNPJ válido.');
-      }else {
-        console.log('CNPJ inválido.');
-      }
-    }else{
-      if (isCPF(strCPForCNPJ)){
-        console.log('CPF válido.');
-      }else {
-        console.log('CPF inválido.');
+    }else {
+      if (strCPForCNPJ.length > 14){
+        if (isCNPJ(strCPForCNPJ)){
+          console.log('%c CNPJ válido.', 'color: blue');
+        }else {
+          console.log('%c CNPJ inválido.', 'color: red');
+        }
+      }else{
+        if (isCPF(strCPForCNPJ)){
+          console.log('%c CPF válido.', 'color: blue');
+        }else {
+          console.log('%c CPF inválido.', 'color: red');
+        }
       }
     }
   });
@@ -304,9 +304,9 @@ $.fn.dateMask = function(){
   var valid_date = {
     onComplete: function(date){
       if (isDate(date)){
-        console.log('Data válida.');
+        console.log('%c Data válida.', 'color: blue');
       }else {
-        console.log('Data inválida.');
+        console.log('%c Data inválida.', 'color: red');
       }
     },
     clearIfNotMatch: true,
@@ -406,3 +406,13 @@ $.fn.justNumberMask = function(){
     }
   });
 };
+
+
+/*****************************
+  MUDA A COR DA TAG H1
+*****************************/
+
+$('h1').dblclick(function(){
+  var color = '#' + Math.floor(Math.random()*16777215).toString(16);
+  $(this).css('color', color);
+});

@@ -3,10 +3,18 @@ body {
 }
 
 h1 {
-  text-align: center;
   padding-top: 50px;
-}
-
-.container {
-  width: 300px;
+  color: #8A2BE2;
+  font-family: 'Raleway', sans-serif;
+  font-size: 62px;
+  font-weight: 800;
+  line-height: 72px;
+  margin: 0 0 24px;
+  text-align: center;
+  text-transform: uppercase;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
 }
