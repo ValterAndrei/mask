@@ -5,6 +5,7 @@ $(document).ready(function(){
   $('.date').dateMask();
   $('.phone').phoneMask();
   $('.money').moneyMask();
+  $('.percent').percentMask();
   $('.just_number').justNumberMask();
   $('.email').emailMask();
 });
@@ -350,6 +351,19 @@ $.fn.dateMask = function(){
 
 
 /*****************************
+  PERCENTUAL
+*****************************/
+
+$.fn.percentMask = function(){
+  this.attr('maxlength', '6').mask('##0,00%', {reverse: true}).blur(function(){
+    if ($(this).val() == '%'){
+      $(this).val('')
+    }
+  });
+};
+
+
+/*****************************
   VALIDA O DINHEIRO
 *****************************/
 
@@ -412,7 +426,7 @@ $.fn.justNumberMask = function(){
   MUDA A COR DA TAG H1
 *****************************/
 
-$('h1').dblclick(function(){
+$('h1').click(function(){
   var color = '#' + Math.floor(Math.random()*16777215).toString(16);
   $(this).css('color', color);
 });
