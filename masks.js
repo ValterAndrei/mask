@@ -11,11 +11,6 @@ $(document).ready(function(){
 });
 
 
-// In jQuery (or $), the fn property is just an alias(apelido designado para referenciar algo) to the prototype property.
-// Exemple:
-// http://jsfiddle.net/CVrFU/
-
-
 /*****************************
   VALIDA O CNPJ
 *****************************/
@@ -426,7 +421,7 @@ $.fn.justNumberMask = function(){
   MUDA A COR DA TAG H1
 *****************************/
 
-$('h1').click(function(){
+$('h1').mouseover(function(){
   var color = '#' + Math.floor(Math.random()*16777215).toString(16);
   $(this).css('color', color);
 });

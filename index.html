@@ -1,79 +1,81 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <!-- Masks js -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.12/jquery.mask.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-maskmoney/3.0.2/jquery.maskMoney.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <!-- Style -->
+    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css' integrity='sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ' crossorigin='anonymous'>
+    <link rel='stylesheet' type='text/css' href='style.css'>
+
+    <!-- JS -->
+    <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.12/jquery.mask.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery-maskmoney/3.0.2/jquery.maskMoney.min.js'></script>
   </head>
   <body>
-    <h1 title="Clique para mudar esta cor!">Máscaras jQuery</h1>
+    <h1>Máscaras jQuery</h1>
 
-    <div class="container">
-      <div class="row">
-        <div class="col">
-          <div class="form-group">
-            <label for="cpf">CPF</label>
-            <input type="text" class="form-control cpf" id="cpf">
+    <div class='container'>
+      <div class='row'>
+        <div class='col'>
+          <div class='form-group'>
+            <label for='cpf'>CPF</label>
+            <input type='text' class='form-control cpf' id='cpf'>
           </div>
         </div>
-        <div class="col">
-          <div class="form-group">
-            <label for="cnpj">CNPJ</label>
-            <input type="text" class="form-control cnpj" id="cnpj">
+        <div class='col'>
+          <div class='form-group'>
+            <label for='cnpj'>CNPJ</label>
+            <input type='text' class='form-control cnpj' id='cnpj'>
           </div>
         </div>
-        <div class="col">
-          <div class="form-group">
-            <label for="cpfOrCnpj">CPF ou CNPJ</label>
-            <input type="text" class="form-control cpfOrCnpj" id="cpfOrCnpj">
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col">
-          <div class="form-group">
-            <label for="date">Data</label>
-            <input type="text" class="form-control date" id="date">
-          </div>
-        </div>
-        <div class="col">
-          <div class="form-group">
-            <label for="email">Email</label>
-            <input type="text" class="form-control email" id="email">
-          </div>
-        </div>
-        <div class="col">
-          <div class="form-group">
-            <label for="phone">Telefone</label>
-            <input type="text" class="form-control phone" id="phone">
+        <div class='col'>
+          <div class='form-group'>
+            <label for='cpfOrCnpj'>CPF ou CNPJ</label>
+            <input type='text' class='form-control cpfOrCnpj' id='cpfOrCnpj'>
           </div>
         </div>
       </div>
-      <div class="row">
-        <div class="col">
-          <div class="form-group">
-            <label for="percent">Porcentagem</label>
-            <input type="text" class="form-control percent" id="percent">
+      <div class='row'>
+        <div class='col'>
+          <div class='form-group'>
+            <label for='date'>Data</label>
+            <input type='text' class='form-control date' id='date'>
           </div>
         </div>
-        <div class="col">
-          <div class="form-group">
-            <label for="just_number">Números [0-9]</label>
-            <input type="text" class="form-control just_number" id="just_number">
+        <div class='col'>
+          <div class='form-group'>
+            <label for='email'>Email</label>
+            <input type='text' class='form-control email' id='email'>
           </div>
         </div>
-        <div class="col">
-          <div class="form-group">
-            <label for="money">Valor</label>
-            <input type="text" class="form-control money" id="money">
+        <div class='col'>
+          <div class='form-group'>
+            <label for='phone'>Telefone</label>
+            <input type='text' class='form-control phone' id='phone'>
+          </div>
+        </div>
+      </div>
+      <div class='row'>
+        <div class='col'>
+          <div class='form-group'>
+            <label for='percent'>Porcentagem</label>
+            <input type='text' class='form-control percent' id='percent'>
+          </div>
+        </div>
+        <div class='col'>
+          <div class='form-group'>
+            <label for='just_number'>Números [0-9]</label>
+            <input type='text' class='form-control just_number' id='just_number'>
+          </div>
+        </div>
+        <div class='col'>
+          <div class='form-group'>
+            <label for='money'>Valor</label>
+            <input type='text' class='form-control money' id='money'>
           </div>
         </div>
       </div>
     </div>
 
-    <script src="masks.js" charset="utf-8"></script>
+    <script src='masks.js' charset='utf-8'></script>
   </body>
 </html>
