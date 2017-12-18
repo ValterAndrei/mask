@@ -425,3 +425,14 @@ $('h1').mouseover(function(){
   var color = '#' + Math.floor(Math.random()*16777215).toString(16);
   $(this).css('color', color);
 });
+
+
+/*****************************
+  SOMENTE NÚMERO E VÍRGULA
+*****************************/
+
+// $(document).ready(function () {
+//   $('#num').bind('keyup paste', function(){
+//     this.value = this.value.replace(/[^0-9,]/g,'').replace(/,,/g,',');
+//   });
+// });
