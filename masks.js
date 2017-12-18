@@ -431,8 +431,13 @@ $('h1').mouseover(function(){
   SOMENTE NÚMERO E VÍRGULA
 *****************************/
 
-// $(document).ready(function () {
-//   $('#num').bind('keyup paste', function(){
-//     this.value = this.value.replace(/[^0-9,]/g,'').replace(/,,/g,',');
-//   });
+// $(document).ready(function() {
+//  $('#change_status_response_property_ids').bind('keyup paste', function(){
+//    this.value =
+//      this
+//        .value
+//        .replace(/[^0-9,]/g,'')
+//        .replace(/,,+/g,',')
+//        .replace(/^,/, '');
+//  });
 // });
