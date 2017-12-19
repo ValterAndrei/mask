@@ -428,16 +428,15 @@ $('h1').mouseover(function(){
 
 
 /*****************************
-  SOMENTE NÚMERO E VÍRGULA
+  LISTA COM NÚMEROS E VÍRGULAS
 *****************************/
 
 // $(document).ready(function() {
-//  $('#change_status_response_property_ids').bind('keyup paste', function(){
-//    this.value =
-//      this
-//        .value
-//        .replace(/[^0-9,]/g,'')
-//        .replace(/,,+/g,',')
-//        .replace(/^,/, '');
+//  $('#list').bind('keyup paste', function(){
+//    this.value = this.value.replace(/[^0-9,]/g,'').replace(/,,+/g,',').replace(/^,/, '');
+//  });
+//
+//  $('#list').bind('blur', function(){
+//    this.value = this.value.replace(/,$/g, '');
 //  });
 // });
