@@ -350,7 +350,7 @@ $.fn.dateMask = function(){
 *****************************/
 
 $.fn.percentMask = function(){
-  this.attr('maxlength', '6').mask('##0,00%', {reverse: true}).blur(function(){
+  this.attr('maxlength', '7').mask('##0,00%', {reverse: true}).blur(function(){
     if ($(this).val() == '%'){
       $(this).val('')
     }
