@@ -440,3 +440,21 @@ $('h1').mouseover(function(){
 //    this.value = this.value.replace(/,$/g, '');
 //  });
 // });
+
+
+/*****************************
+  NÚMERO COM PONTO
+*****************************/
+
+// $('.bitcoin_value, .bitcoin_amount').bind('keypress paste', function(event) {
+//   if (((event.which != 46 || (event.which == 46 && $(this).val() == '')) ||
+//     $(this).val().indexOf('.') != -1) && (event.which < 48 || event.which > 57)) {
+//     event.preventDefault();
+//   }
+// }).on('blur', function() {
+//   number = $(this).val();
+//   if (number[number.length -1] === '.'){
+//     number = number.replace('.', '');
+//     $(this).val(number);
+//   }
+// });
