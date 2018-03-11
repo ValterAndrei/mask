@@ -363,7 +363,13 @@ $.fn.percentMask = function(){
 *****************************/
 
 $.fn.moneyMask = function(){
-  this.attr('maxlength', '15').maskMoney({allowNegative: true, thousands:'.', decimal:',', affixesStay: false})
+  this.attr('maxlength', '15').maskMoney({
+    allowNegative: true,
+    allowZero: true,
+    thousands:'.',
+    decimal:',',
+    affixesStay: false
+  })
 };
 
 
@@ -381,7 +387,12 @@ $.fn.phoneMask = function(){
     }
   };
 
-  this.mask(SPMaskBehavior, spOptions);
+  this.mask(SPMaskBehavior, spOptions).blur(function(){
+    if ($(this).val().length < 14){
+      $(this).val('');
+    }
+  });
+  return this;
 };
 
 
