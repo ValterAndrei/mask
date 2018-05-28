@@ -469,3 +469,15 @@ $('h1').mouseover(function(){
 //     $(this).val(number);
 //   }
 // });
+
+
+/*****************************
+  OCULTANDO ELEMENTO AO PASSAR O MOUSE
+*****************************/
+// $(function(){
+//   $('.environment').hover(function() {
+//     $(this).fadeTo(1,0);
+//   },function() {
+//     $(this).fadeTo(1,1);
+//   });
+// });
