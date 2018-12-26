@@ -454,6 +454,39 @@ $('h1').mouseover(function(){
 
 
 /*****************************
+VALIDA SOMENTE NÚMEROS DIGITADOS COM UMA VÍRGULA
+*****************************/
+
+// $('.number_with_comma').keypress(function(event) {
+//   var $this = $(this);
+//   if ((event.which != 44 || $this.val().indexOf(',') != -1) &&
+//   ((event.which < 48 || event.which > 57) &&
+//   (event.which != 0 && event.which != 8))) {
+//     event.preventDefault();
+//   }
+//
+//   var text = $(this).val();
+//   if ((event.which == 44) && (text.indexOf(',') == -1)) {
+//     setTimeout(function() {
+//       if ($this.val().substring($this.val().indexOf(',')).length > 3) {
+//         $this.val($this.val().substring(0, $this.val().indexOf(',') + 3));
+//       }
+//     }, 1);
+//   }
+//
+//   if ((text.indexOf(',') != -1) &&
+//   (text.substring(text.indexOf(',')).length > 2) &&
+//   (event.which != 0 && event.which != 8) &&
+//   ($(this)[0].selectionStart >= text.length - 2)) {
+//     event.preventDefault();
+//   }
+// }).bind('blur', function(){
+//   this.value = this.value.replace(/,$/g, '');
+//   this.value = this.value.replace(/^,/, '');
+// });
+
+
+/*****************************
   NÚMERO COM PONTO
 *****************************/
 
