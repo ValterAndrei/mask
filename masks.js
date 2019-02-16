@@ -514,3 +514,20 @@ VALIDA SOMENTE NÚMEROS DIGITADOS COM UMA VÍRGULA
 //     $(this).fadeTo(1,1);
 //   });
 // });
+
+
+/*****************************
+  TEXTO COM A PRIMEIRA LETRA EM MAIÚSCULO,
+  TEXTO SEMPRE EM MINÚSCULO
+*****************************/
+// $(function(){
+//   $('.capitalize_text').on('keyup', function(e){
+//     var txt = $(this).val();
+//     $(this).val(txt.replace(/^(.)|\s(.)/g, function($1){ return $1.toUpperCase( ); }));
+//   });
+//
+//   $('.lowercase_text').on('keyup', function (e){
+//     var txt = $(this).val();
+//     $(this).val(txt.toLowerCase());
+//   });
+// });
