@@ -439,6 +439,29 @@ $('h1').mouseover(function(){
 
 
 /*****************************
+  REMOVE MÁSCARAS
+*****************************/
+
+$('.unmasked_fields').on('click', function(){
+  let cpf = $('.cpf').cleanVal();
+  let cnpj = $('.cnpj').cleanVal();
+  let cpfOrCnpj = $('.cpfOrCnpj').cleanVal();
+  let phone = $('.phone').cleanVal();
+  let percent = $('.percent').val().replace(/\,/g, '.').replace(/\%/g, '');
+  let money = $('.money').maskMoney('unmasked')[0];
+
+  alert(
+        '\n CPF: '         + cpf +
+        '\n CNPJ: '        + cnpj +
+        '\n CPF ou CNPJ: ' + cpfOrCnpj +
+        '\n Telefone: '    + phone +
+        '\n Porcentagem: ' + percent +
+        '\n Valor: '       + money
+        )
+});
+
+
+/*****************************
   LISTA COM NÚMEROS E VÍRGULAS
 *****************************/
 
