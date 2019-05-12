@@ -1,6 +1,6 @@
 # Máscaras - jQuery
 
-[Demo](https://htmlpreview.github.io/?https://github.com/ValterAndrei/mask/blob/master/index.html)
+[Demo](https://raw.githack.com/ValterAndrei/mask/master/index.html)
 
 
 Recebendo parâmetros da maskMoney em Ruby on Rails:
