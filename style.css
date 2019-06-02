@@ -11,8 +11,8 @@ h1 {
   margin: 0 0 24px;
   text-align: center;
   text-transform: uppercase;
+  user-select: none;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
-  user-select: none;
 }
