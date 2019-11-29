@@ -19,6 +19,10 @@ var f = atual.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'}).repla
 var f2 = atual.toLocaleString('pt-br', {minimumFractionDigits: 2});
 ```
 
+Removendo máscara:
+```
+value = parseFloat(total_value.val().replace('.', '').replace(',','.'));
+```
 
 # Documentação
 
