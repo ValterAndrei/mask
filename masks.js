@@ -554,3 +554,14 @@ VALIDA SOMENTE NÚMEROS DIGITADOS COM UMA VÍRGULA
 //     $(this).val(txt.toLowerCase());
 //   });
 // });
+
+
+/*****************************
+  REMOVENDO MÁSCARA DE DINHEIRO DO CAMPO
+*****************************/
+// $.fn.removeMaskMoney = function () {
+//   if (this.val())
+//     return parseFloat(this.val().replace('.', '').replace(',', '.'))
+//   else
+//     return 0
+// }
