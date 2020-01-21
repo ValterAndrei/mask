@@ -554,3 +554,18 @@ VALIDA SOMENTE NÚMEROS DIGITADOS COM UMA VÍRGULA
 //     $(this).val(txt.toLowerCase());
 //   });
 // });
+
+
+/*****************************
+  REMOVE MÁSCARAS DE DINHEIRO
+*****************************/
+
+// $.fn.removeMaskMoney = function () {
+//   if (this.val())
+//     return parseFloat(this.val().replace('.', '').replace(',', '.'))
+//   else
+//     return 0
+// }
+
+// Uso:
+// $(this).removeMaskMoney()
