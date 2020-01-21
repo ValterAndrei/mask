@@ -6,7 +6,7 @@
 Recebendo parâmetros da maskMoney em Ruby on Rails:
 
 ```
-params_result[:value] = params_result[:value].gsub(/\./, '').gsub(/,/, '.').to_f
+params_result[:kit_value] = params_result[:kit_value].gsub('.', '').gsub(',', '.')
 ```
 
 Convertendo números decimais em dinheiro (R$):
@@ -19,6 +19,10 @@ var f = atual.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'}).repla
 var f2 = atual.toLocaleString('pt-br', {minimumFractionDigits: 2});
 ```
 
+Removendo máscara:
+```
+total_value = parseFloat(value.val().replace('.', '').replace(',','.'));
+```
 
 # Documentação
 
